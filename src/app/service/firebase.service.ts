@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FirebaseService {
@@ -11,8 +13,8 @@ export class FirebaseService {
   }
 
   fetchData(){
-    return this.http.get('/public/people.json').subscribe(
-      (data)=> console.log(data)
+    return this.http.get('https://personalitytype-62d72.firebaseio.com/.json').map(
+      (res) => res.json()
     );
   }
 

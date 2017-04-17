@@ -12,7 +12,12 @@ import { FirebaseService } from '../service/firebase.service';
 export class HomeComponent implements OnInit {
 
 constructor(private FbService: FirebaseService) { }
-ngOnInit(){}
+people = [];
+ngOnInit(){
+  this.FbService.fetchData().subscribe(
+    (data) => this.people = data
+  );
+}
 
 getPeople(){
   this.FbService.fetchData()
@@ -22,7 +27,7 @@ addPerson(){
   this.FbService.log()
 }
 
-people = [];
+
   classes = {'blue': false, 'purple': false, 'green': true, 'yellow': false};
   test = false;
 

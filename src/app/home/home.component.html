@@ -1,0 +1,37 @@
+<p>Find out your personality type: <a href="https://www.16personalities.com/free-personality-test">Personality Test</a></p>
+
+<label>Search by name:</label>
+<input type="text" [(ngModel)]="searchName"/>
+<label>Search by type:</label>
+<input type="text" [(ngModel)]="searchType"/>
+
+<p>Add your personality type to the list.</p>
+<input [(ngModel)]="people.name"/>
+<input [(ngModel)]="people.personType" list="personTypes">
+<datalist id="personTypes">
+  <option value="INTJ">
+  <option value="INTP">
+  <option value="INFP">
+  <option value="ESTJ">
+  <option value="ENFP">
+</datalist>
+<button (click)="addPerson()">Add</button>
+<br/>
+
+
+<ul id="ninja-listing">
+  <li *ngFor="let person of people | name:searchName | type:searchType" >
+    <div class="single-ninja">
+    <span [ngStyle]="{background: person.color}">{{person.personType | uppercase}}</span>
+    <span>{{person.name}}</span>
+  </div>
+  </li>
+</ul>
+
+
+<style>
+.blue {background-color: MediumTurquoise;}
+.purple {background-color: SlateBlue;}
+.yellow {background-color: Khaki ;}
+.green {background-color: DarkSeaGreen;}
+</style>

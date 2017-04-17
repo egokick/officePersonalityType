@@ -6,15 +6,14 @@ import { FirebaseService } from '../service/firebase.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  providers: [FirebaseService]
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
 
-constructor(private FirebaseService: LoggingService) { }
+constructor(private FbService: FirebaseService) { }
 
-logIt(){
-  this.logger.log()
+addPerson(){
+  this.FbService.log()
 }
 
   classes = {'blue': false, 'purple': false, 'green': true, 'yellow': false};
@@ -26,9 +25,7 @@ logIt(){
     {name: 'James', personType: 'INFJ', color: 'yellow'},
     {name: 'Ian', personType: 'ENFP', color: 'green'}
   ];
-addPerson($event){
-  return;
-}
+
 
 
 }

@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { DirectoryComponent } from './directory/directory.component';
 import { FilterPipe } from './name.pipe';
 import { TypePipe } from './type.pipe';
+import { FirebaseService } from './service/firebase.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { TypePipe } from './type.pipe';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

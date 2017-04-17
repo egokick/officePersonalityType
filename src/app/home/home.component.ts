@@ -2,6 +2,7 @@ import { Component, OnInit, Input , EventEmitter} from '@angular/core';
 import { FilterPipe } from '../name.pipe';
 import { TypePipe } from '../type.pipe';
 import { FirebaseService } from '../service/firebase.service';
+declare var firebase: any;
 
 @Component({
   selector: 'app-home',
@@ -12,20 +13,24 @@ import { FirebaseService } from '../service/firebase.service';
 export class HomeComponent implements OnInit {
 
 constructor(private FbService: FirebaseService) { }
-people = [];
-ngOnInit(){
-  this.FbService.fetchData().subscribe(
-    (data) => this.people = data
-  );
-}
+  people = [];
+  ngOnInit(){
+    /*this.FbService.fetchData().subscribe(
+      (data) => this.people = data
+    );*/
+    this.fbGetData();
+  }
 
-getPeople(){
-  this.FbService.fetchData()
-}
+  getPeople(){this.FbService.fetchData()}
+  addPerson(){this.FbService.log()}
 
-addPerson(){
-  this.FbService.log()
-}
+  fbGetData(){
+    firebase.database().ref('/').on('child_added',
+      (snapshot) => {
+        this.people.push(snapshot.val())
+      }
+    )
+  }
 
 
   classes = {'blue': false, 'purple': false, 'green': true, 'yellow': false};

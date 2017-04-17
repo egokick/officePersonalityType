@@ -32,12 +32,12 @@ constructor(private FbService: FirebaseService) { }
     )
   }
 
+  fbPostData(name, type){
+    firebase.database().ref('/').push({name: name, type: type})
+  }
+
 
   classes = {'blue': false, 'purple': false, 'green': true, 'yellow': false};
   test = false;
-
-
-
-
 
 }

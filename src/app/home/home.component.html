@@ -6,8 +6,18 @@
 <input type="text" [(ngModel)]="searchType"/>
 
 <p>Add your personality type to the list.</p>
+
+<label>Name:</label>
 <input [(ngModel)]="people.name"/>
+<label>Type:</label>
 <input [(ngModel)]="people.personType" list="personTypes">
+
+<form name="AddPeople">
+  <input type="text" [(ngModel)]="name" name="AddPeopleName"/>
+  <input type="text" [(ngModel)]="type" name="AddPeopleType"/>
+  <button (click)="fbPostData(name, type)">Add Person</button>
+</form>
+
 <datalist id="personTypes">
   <option value="INTJ">
   <option value="INTP">
@@ -15,8 +25,9 @@
   <option value="ESTJ">
   <option value="ENFP">
 </datalist>
-<button (click)="getPeople()">Get</button>
+<!--<button (click)="getPeople()">Get</button>-->
 <button (click)="addPerson()">Add</button>
+
 <br/>
 
 

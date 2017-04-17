@@ -6,25 +6,27 @@ import { FirebaseService } from '../service/firebase.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [FirebaseService]
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
 constructor(private FbService: FirebaseService) { }
+ngOnInit(){}
+
+getPeople(){
+  this.FbService.fetchData()
+}
 
 addPerson(){
   this.FbService.log()
 }
 
+people = [];
   classes = {'blue': false, 'purple': false, 'green': true, 'yellow': false};
   test = false;
 
-  people = [
-    {name: 'Thomas', personType: 'INTJ-A', color: 'purple'},
-    {name: 'Louis', personType: 'ESFJ', color: 'blue'},
-    {name: 'James', personType: 'INFJ', color: 'yellow'},
-    {name: 'Ian', personType: 'ENFP', color: 'green'}
-  ];
+
 
 
 

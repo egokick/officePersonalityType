@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Thomas",
+    "personType": "INTJ-A",
+    "color": "purple"
+  },
+  {
+    "name": "Louis",
+    "personType": "ESFJ",
+    "color": "blue"
+  },
+  {
+    "name": "James",
+    "personType": "INFJ",
+    "color": "yellow"
+  },
+  {
+    "name": "Ian",
+    "personType": "ENFP",
+    "color": "green"
+  }
+]

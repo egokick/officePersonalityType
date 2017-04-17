@@ -1,4 +1,4 @@
-import { Component, OnInit, Input , EventEmitter} from '@angular/core';
+import { Component, OnInit, Input , EventEmitter, Pipe} from '@angular/core';
 import { FilterPipe } from '../name.pipe';
 import { TypePipe } from '../type.pipe';
 import { FirebaseService } from '../service/firebase.service';
@@ -14,11 +14,29 @@ export class HomeComponent implements OnInit {
 
 constructor(private FbService: FirebaseService) { }
   people = [];
+  ip = "";
+
+getIP(url, success) {
+     var ud = '_' + +new Date,
+         script = document.createElement('script'),
+         head = document.getElementsByTagName('head')[0]
+                || document.documentElement;
+
+     window[ud] = function(data) {
+         head.removeChild(script);
+         success && success(data);
+     };
+
+     script.src = url.replace('callback=?', 'callback=' + ud);
+     head.appendChild(script);
+ }
+
   ngOnInit(){
     /*this.FbService.fetchData().subscribe(
       (data) => this.people = data
     );*/
     this.fbGetData();
+
   }
 
   getPeople(){this.FbService.fetchData()}
@@ -33,8 +51,15 @@ constructor(private FbService: FirebaseService) { }
   }
 
   fbPostData(name, type){
-    firebase.database().ref('/').push({name: name, type: type})
+    var sip = this.getIP('//freegeoip.net/json/?callback=?', function(data){
+      data["ip"]
+    })
+  //  console.log(this.ip);
+    firebase.database().ref('/').push({name: name, personType: type})
   }
+
+
+
 
 
   classes = {'blue': false, 'purple': false, 'green': true, 'yellow': false};

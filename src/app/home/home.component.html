@@ -1,20 +1,20 @@
 <p>Find out your personality type: <a href="https://www.16personalities.com/free-personality-test">Personality Test</a></p>
 
-<label>Search by name:</label>
+<label>Search Name:</label>
 <input type="text" [(ngModel)]="searchName"/>
-<label>Search by type:</label>
+<label>Type:</label>
 <input type="text" [(ngModel)]="searchType"/>
 
 <p>Add your personality type to the list.</p>
 
-<label>Name:</label>
-<input [(ngModel)]="people.name"/>
-<label>Type:</label>
-<input [(ngModel)]="people.personType" list="personTypes">
+
+
 
 <form name="AddPeople">
-  <input type="text" [(ngModel)]="name" name="AddPeopleName"/>
-  <input type="text" [(ngModel)]="type" name="AddPeopleType"/>
+<label>Name:</label>
+<input type="text" [(ngModel)]="name" name="AddPeopleName"/>
+<label>Type:</label>
+<input type="text" [(ngModel)]="type" name="AddPeopleType"  list="personTypes"/>
   <button (click)="fbPostData(name, type)">Add Person</button>
 </form>
 
@@ -25,17 +25,13 @@
   <option value="ESTJ">
   <option value="ENFP">
 </datalist>
-<!--<button (click)="getPeople()">Get</button>-->
-<button (click)="addPerson()">Add</button>
-
 <br/>
-
 
 <ul id="ninja-listing">
   <li *ngFor="let person of people | name:searchName | type:searchType" >
     <div class="single-ninja">
     <span [ngStyle]="{background: person.color}">{{person.personType | uppercase}}</span>
-    <span>{{person.name}}</span>
+    <span>{{person.name | lowercase }}</span>
   </div>
   </li>
 </ul>

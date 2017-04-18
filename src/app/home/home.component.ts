@@ -12,35 +12,14 @@ declare var firebase: any;
 })
 export class HomeComponent implements OnInit {
 
-constructor(private FbService: FirebaseService) { }
+  constructor(private FbService: FirebaseService) { }
   people = [];
-  ip = "";
-
-getIP(url, success) {
-     var ud = '_' + +new Date,
-         script = document.createElement('script'),
-         head = document.getElementsByTagName('head')[0]
-                || document.documentElement;
-
-     window[ud] = function(data) {
-         head.removeChild(script);
-         success && success(data);
-     };
-
-     script.src = url.replace('callback=?', 'callback=' + ud);
-     head.appendChild(script);
- }
-
   ngOnInit(){
     /*this.FbService.fetchData().subscribe(
       (data) => this.people = data
     );*/
     this.fbGetData();
-
   }
-
-  getPeople(){this.FbService.fetchData()}
-  addPerson(){this.FbService.log()}
 
   fbGetData(){
     firebase.database().ref('/').on('child_added',
@@ -51,18 +30,9 @@ getIP(url, success) {
   }
 
   fbPostData(name, type){
-    var sip = this.getIP('//freegeoip.net/json/?callback=?', function(data){
-      data["ip"]
-    })
-  //  console.log(this.ip);
     firebase.database().ref('/').push({name: name, personType: type})
   }
 
-
-
-
-
   classes = {'blue': false, 'purple': false, 'green': true, 'yellow': false};
-  test = false;
 
 }

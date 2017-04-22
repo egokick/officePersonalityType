@@ -11,19 +11,28 @@
 <label>Name:</label>
 <input type="text" [(ngModel)]="name" name="AddPeopleName"/>
 <label>Type:</label>
-<input type="text" [(ngModel)]="type" name="AddPeopleType"  list="personTypes"/>
+<select id="type" type="text" [(ngModel)]="type" name="AddPeopleType" list="personTypes" size="1">
+  <option value="ISTJ">ISTJ</option>
+  <option value="ISFJ">ISFJ</option>
+  <option value="INFJ">INFJ</option>
+  <option value="INTJ">INTJ</option>
+  <option value="ISTP">ISTP</option>
+  <option value="ISFP">ISFP</option>
+  <option value="INFP">INFP</option>
+  <option value="INTP">INTP</option>
+  <option value="ESTP">ESTP</option>
+  <option value="ESFP">ESFP</option>
+  <option value="ENFP">ENFP</option>
+  <option value="ENTP">ENTP</option>
+  <option value="ESTJ">ESTJ</option>
+  <option value="ESFJ">ESFJ</option>
+  <option value="ENFJ">ENFJ</option>
+  <option value="ENTJ">ENTJ</option>
+</select>
   <button (click)="fbPostData(name, type)">Add Person</button>
 </form>
 
-<datalist id="personTypes">
-  <option value="INTJ">
-  <option value="INTP">
-  <option value="INFP">
-  <option value="ESTJ">
-  <option value="ENFP">
-</datalist>
 <br/>
-
 <ul id="ninja-listing">
   <li *ngFor="let person of people | name:searchName | type:searchType" >
     <div class="single-ninja">

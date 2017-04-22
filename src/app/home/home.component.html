@@ -36,15 +36,7 @@
 <ul id="ninja-listing">
   <li *ngFor="let person of people | name:searchName | type:searchType" >
     <div class="single-ninja">
-    <span [ngStyle]="{background: person.color}">{{person.personType | lowercase}}</span>
-    <span>{{person.name | lowercase }}</span>
+    <span>{{person.name | lowercase }}</span>-
   </div>
   </li>
 </ul>
-
-<style>
-.blue {background-color: MediumTurquoise;}
-.purple {background-color: SlateBlue;}
-.yellow {background-color: Khaki ;}
-.green {background-color: DarkSeaGreen;}
-</style>

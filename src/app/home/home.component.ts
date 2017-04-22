@@ -1,4 +1,4 @@
-import { Component, OnInit, Input , EventEmitter, Pipe} from '@angular/core';
+import { Component, OnInit, Input , EventEmitter, Pipe, PipeTransform} from '@angular/core';
 import { FilterPipe } from '../name.pipe';
 import { TypePipe } from '../type.pipe';
 import { FirebaseService } from '../service/firebase.service';
@@ -14,10 +14,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private FbService: FirebaseService) { }
   people = [];
+
   ngOnInit(){
-    /*this.FbService.fetchData().subscribe(
-      (data) => this.people = data
-    );*/
     this.fbGetData();
   }
 
